@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>時鐘 App</title>
+
+
+ <!-- Webix CDN -->
+
+
+ <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css">  
+ <script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+
+
+ <!-- 你的樣式 -->
+ <style>
+/*鬧鐘*/
+
+.alarm-title {
+  font-weight: bold;
+  font-size: 80px;
+  color: #b48e6b;
+}
+
+.alarm-time {
+  font-size: 40px;
+  color: #b48e6b;
+  margin-top: 20px;
+}
+
+/**/
+ .alarm-label {
+   font-size: 30px;
+   color: #b48e6b;
+   font-weight: bold;
+   margin-right: 50px;  /* 增加 label 和輸入框之間的間距 */
+   list-style-type: none; /* 清除可能的黑色小點 */
+ }
+  .webix_input {
+   margin-left: 0 !important;  /* 確保 label 和 input 之間的間距不會被重寫 */
+ }
+
+
+/*補上*/
+.menu-style {
+ position: fixed;
+ bottom: 0;
+ width: 100%;
+ font-size: 30px !important;  
+ font-weight: bold !important; 
+}
+
+
+.clock-big {
+ font-size: 120px;
+ font-weight: bold;
+ color: #b48e6b;
+ text-align: center;
+ line-height: 200px;
+}
+.alarm-label {
+ font-size:30px;
+ color: #b48e6b;
+ font-weight: bold;
+}
+.stopwatch-big {
+ font-size: 100px;
+ font-weight: bold;
+ color: #b48e6b;
+ text-align: center;
+}
+
+
+/* 1. 未選中：外框背景 */
+.menu-style .webix_el_box:not(.webix_selected) {
+ background-color: #D4B79A;
+ color: #b48e6b;
+}
+
+
+/* 2. 未選中：裡面的按鈕 */
+.menu-style :not(.webix_selected) {
+ background-color: #D4B79A;
+ color: white;
+ border: none;
+}
+
+
+/* 3. hover 效果（未選中） */
+.menu-style :hover:not(.webix_selected) {
+
+
+ color: #b48e6b !important;
+}
+
+
+/* 4. 選中狀態 */
+.menu-style .webix_selected {
+ background-color: #b48e6b !important;
+ color: white !important;
+}
+
+
+
+
+/* 1. 全局背景 */
+body, html {
+ background-color: #f8f2e8 !important;
+ margin: 0;
+ padding: 0;
+ height: 100%;
+}
+.webix_view, .webix_layout_line {
+ background-color: #f8f2e8 !important;
+}
+/* 2. 共通按鈕樣式 */
+.webix_button {
+ background-color: transparent !important;
+ color: #f8f2e8 !important;
+ font-weight: bold;
+ border: 2px solid #f8f2e8 !important;
+ transition: all 0.3s ease;
+}
+
+
+
+
+
+
+/* 儲存鬧鐘按鈕樣式 */
+.save-alarm-button {
+ background-color: #b48e6b !important;
+ color: white !important;
+ border: 2px solid #b48e6b !important;
+ font-weight: bold;
+ transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+
+.save-alarm-button:hover {
+ background-color: #D4B79A !important;
+ color: #b48e6b !important;
+ border: 2px solid #b48e6b !important;
+}
+
+
+
+
+/* 6. 碼表按鈕樣式 */
+.start-button, .pause-button, .reset-button {
+ background-color: #b48e6b !important;
+ color: white !important;
+ font-weight: bold;
+
+
+ min-width: 80px;
+ text-align: center;
+}
+.start-button:hover, .pause-button:hover, .reset-button:hover {
+ background-color: #D4B79A !important;
+}
+.start-button:active, .pause-button:active, .reset-button:active {
+ background-color: #D4B79A !important;
+}
+
+
+/* 7. 碼表按鈕置中（修正偏右問題） */
+.stopwatch-container {
+ display: flex !important;
+ justify-content: center !important;
+ align-items: center;
+ width: 100%;
+ margin-top: 20px;
+}
+
+ </style>
+ </head>
+
+
+<body>
+ <!-- 這裡不需要放任何內容，Webix 會自動建 UI -->
+
+
+ <!-- 你的 JS 程式邏輯 -->
+ <script src="renderer.js" defer></script>
+</body>
+</html>
